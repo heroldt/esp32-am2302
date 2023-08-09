@@ -36,7 +36,8 @@ static int await_level_change_usec(gpio_num_t pin, int usec_max, int level) {
             return i;
         if(i >= usec_max)
             return -1;
-        ets_delay_us(1);
+        esp_rom_delay_us
+    (1);
     }
 }
 
@@ -119,7 +120,8 @@ am2302_data_t am2302_read_data(gpio_num_t pin) {
         ESP_LOGE(TAG, "failed to pull level down (transmission initiation)");
         return rv;
     }
-    ets_delay_us(3000);
+    esp_rom_delay_us
+(3000);
 
     // set pin direction to input to read the level
     if((rv.error = gpio_set_direction(pin, GPIO_MODE_INPUT)) != ESP_OK) {
